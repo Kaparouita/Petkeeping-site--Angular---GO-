@@ -1,6 +1,6 @@
-## 359-backend
+## BACKEND
 
-This the backend for the 359 project. It is a RESTful API that is built using Go and PostgreSQL.
+This the backend for the Pet-Keeping-Service project. The backend is written in Go and utilizes Postgres as the database for storing data. The backend handles the business logic and provides RESTful APIs for communication with the frontend.
 
 ### Prerequisites
 
