@@ -1,0 +1,21 @@
+.flex-item {
+    flex: 1; /* Adjust the flex-grow factor as needed */
+}
+
+p-dropdown, p-calendar {
+    width: 100%; /* Full width within their containers */
+}
+
+.home {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+    background-image: url("../../../assets/cats.jpg");
+    background-size: cover;
+    background-position: center;
+  }

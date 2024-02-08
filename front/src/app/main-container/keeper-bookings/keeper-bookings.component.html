@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home Page</title>
+</head>
+<body>
+<div class="home">
+  <div class="card">
+    <p-table [value]="bookings" [tableStyle]="{ 'min-width': '50rem' }">
+        <ng-template pTemplate="header">
+            <tr>
+                <th>ID</th>
+                <th>Owner's name</th>
+                <th>Pet type</th>
+                <th>Start date</th>
+                <th>End date</th>
+                <th>Price</th>
+                <th>Status</th> 
+                <th>Message</th>
+                <th>Accept</th>
+                <th>Reject</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-booking>
+            <tr>
+                <td>{{ booking.id }}</td>
+                <td>{{ getOwnerName(booking.owner_id)}}</td>
+                <td>{{ getPetType(booking.owner_id) }}</td>
+                <td>{{ booking.start_date | date:'yyyy-MM-dd' }}</td>
+                <td>{{ booking.end_date  | date:'yyyy-MM-dd' }}</td>
+                <td>{{ booking.price }}</td>
+                <td>{{ booking.status }}</td>
+                <td>
+                  <div class="card flex justify-content-center">
+                      <p-button (click)="showDialogMessage()" label="Message"></p-button>
+                      <p-dialog header="Header" [(visible)]="messageVisible" [modal]="true" [style]="{ width: '50rem' }" [breakpoints]="{ '1199px': '75vw', '575px': '90vw' }">
+                          <div class="flex flex-row align-items-center">
+                              <div class="flex-item p-mr-2">
+                                  <label for="message" class="font-bold block mb-2"> Message </label>
+                                  <input type="text" id="message" [(ngModel)]="message" placeholder="Enter your message">
+                              </div>
+                          </div>
+                          <ng-template pTemplate="footer">
+                              <p-button icon="pi pi-check" (click)="SendMessage(booking)" label="Send" pAutoFocus [autofocus]="true"></p-button>
+                          </ng-template>
+                      </p-dialog>
+                   </div>
+                </td>
+                <td>
+                  <p-button type="button" class="btn btn-primary mb-auto" (click)="onAccept(booking)">Accept</p-button>
+                </td>
+                <td>
+                  <p-button type="button" class="btn btn-primary mb-auto" (click)="onReject(booking)">Reject</p-button>
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+  </div>
+</div>
+</body>

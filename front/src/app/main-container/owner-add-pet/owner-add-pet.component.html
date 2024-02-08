@@ -1,0 +1,55 @@
+<div class="page">
+<div class="flex align-items-center justify-content-center" style="height: 100vh;">
+        <div class="card">
+            <div class="flex flex-column align-items-center">
+                <h1>Pet Info</h1>
+                <form [formGroup]="addPetForm" (ngSubmit)="onSubmit()" class="p-fluid">
+                    <!-- Form fields here -->
+                    <div class="p-field">
+                        <label for="name">Name</label>
+                        <input id="name" type="text" pInputText formControlName="name">
+                    </div>
+                    <div class="p-field">
+                        <label for="age">Age</label>
+                        <input id="age" type="text" pInputText formControlName="age">
+                    </div>
+                    <div class="p-field">
+                        <label for="type">Type</label>
+                        <select id="type" formControlName="type">
+                            <option value="dog">Dog</option>
+                            <option value="cat">Cat</option>
+                        </select>
+                    </div> 
+                    <div class="p-field">
+                        <label for="breed">Breed</label>
+                        <input id="breed" type="text" pInputText formControlName="breed">
+                    </div>
+                    <div class="p-field">
+                        <label for="gender">Gender</label>
+                        <select id="gender" formControlName="gender">
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                        </select>
+                    </div>
+                    <div class="p-field">
+                        <label for="birth_year">Birth year</label>
+                        <input id="birth_year" type="text" pInputText formControlName="birth_year">
+                    </div>
+                    <div class="p-field">
+                        <label for="weight">Weight</label>
+                        <input id="weight" type="text" pInputText formControlName="weight">
+                    </div>
+                    <div class="p-field">
+                        <label for="description">Description</label>
+                        <input id="description" type="text" pInputText formControlName="description">
+                    </div>
+                    <div class="p-field">
+                        <label for="photo">Photo</label>
+                        <input id="photo" type="text" pInputText formControlName="photo">
+                    </div>
+          <button type="submit" pButton label="Add Pet"></button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

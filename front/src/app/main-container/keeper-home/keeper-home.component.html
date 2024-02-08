@@ -1,0 +1,179 @@
+<!-- Description: Home page for the user. -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home Page</title>
+</head>
+<body>
+<div class="navbar navbar-expand-sm">
+  <div class="container-fluid">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="'keeper/' + user.id ">Profile</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="'bookings'">Bookings</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="'reviews'">Reviews</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="'messages'">Messages</a>
+        </li>
+        <li class="nav-item">
+          <button type="button" class="btn btn-primary mb-auto" (click)="onLogout()">
+            Logout
+        </button>
+        </li>
+      </ul>
+  </div>
+</div>
+<div class="home">
+
+<div class="flex flex-row">
+    <!-- View Mode -->
+    <div class="flex-item" *ngIf="!editMode">
+        <p>Username: {{ user.username }}        </p>
+        <p>Email: {{ user.email }}          </p>
+        <p>Password: {{ user.password }}    </p>
+        <p>Firstname: {{ user.first_name }} </p>
+        <p>Lastname: {{ user.last_name }}   </p>
+        <p>Gender: {{ user.gender }}        </p>
+        <p>Birthdate: {{ user.birth_date }} </p>
+        <p>Country: {{ user.country }}      </p>
+        <p>City: {{ user.city }}            </p>
+        <p>Address: {{ user.address }}      </p>
+        <p>Url:{{ user.url }}               </p>
+        <p>Job:{{ user.job }}               </p>
+        <p>Phone: {{ user.phone }}          </p>
+        <p>Lat : {{ user.lat }}, Lon : {{ user.lon }}</p>
+    </div>
+
+    <!-- Edit Mode -->
+    <div class="flex flex-column" *ngIf="editMode">
+        <div class="flex-item-">
+            <label for="name">Username:    </label>
+            <input id="name" type="text" pInputText [disabled]="true" [(ngModel)]="user.username" />
+        </div>
+
+        <div class="flex-item-">
+            <label for="email">Email:  </label>
+            <input id="email" type="email" pInputText [(ngModel)]="user.email" [disabled]="true"/>
+        </div>
+        <div class="flex-item-">
+            <label for="password">Password:    </label>
+            <input
+                id="password"
+                type="{{ passwordVisable ? 'text' : 'password' }}"
+                pInputText
+                [(ngModel)]="user.password"
+            />
+            <button type="button" id="buttonpwd" class="btn btn-primary" (click)="togglePasswordVisibility()">
+                {{ passwordVisable ? 'Hide' : 'Show' }} Pass
+            </button>
+        </div>
+    
+    <div class="flex-item-">
+      <label for="firstname">Firstname:  </label>
+      <input
+        id="firstname"
+        type="text"
+        pInputText
+        [(ngModel)]="user.first_name"
+      />
+    </div>
+
+    <div class="flex-item-">
+      <label for="lastname">Lastname:    </label>
+      <input
+        id="lastname"
+        type="text"
+        pInputText
+        [(ngModel)]="user.last_name"
+      />
+    </div>
+
+    <div class="flex-item-">
+            <label for="gender">Gender:  </label>
+            <select
+              class="form-control"
+              id="gender"
+              name="gender"
+              [(ngModel)]="user.gender"
+              required
+            >
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+              <option value="other">Other</option>
+            </select>
+    </div>
+
+    <div class="flex-item-">
+      <label for="birthdate">Birthdate:  </label>
+      <input
+        id="birthdate"
+        type="date"
+        pInputText
+        [(ngModel)]="birthDate"
+      />
+    </div>
+
+    <div class="flex-item-">
+      <label for="country">Country:  </label>
+      <input id="country" type="text" pInputText [(ngModel)]="user.country" />
+    </div>
+
+    <div class="flex-item-">
+      <label for="ciry">City:    </label>
+      <input id="ciry" type="text" pInputText [(ngModel)]="user.city" />
+    </div>
+
+    <div class="flex-item-">
+      <label for="address">Address:  </label>
+      <input id="address" type="text" pInputText [(ngModel)]="user.address" />
+    </div>
+
+    <div class="flex-item-">
+      <label for="url">Url:  </label>
+      <input id="url" type="text" pInputText [(ngModel)]="user.url" />
+    </div>
+
+    <div class="flex-item-">
+      <label for="job">Job:  </label>
+      <input id="job" type="text" pInputText [(ngModel)]="user.job" />
+    </div>
+
+    <div class="flex-item-">
+      <label for="phone">Phone:  </label>
+      <input id="phone" type="text" pInputText [(ngModel)]="user.phone" />
+    </div>
+
+    <div class="flex-item-">
+      <label for="lat">Lat:  </label>
+      <input id="lat" type="text" pInputText [disabled]="true" [(ngModel)]="user.lat" />
+    </div>
+
+    <div class="flex-item-">
+      <label for="lon">Lon:  </label>
+      <input id="lon" type="text" pInputText [disabled]="true" [(ngModel)] ="user.lon" />
+    </div>
+  </div>
+</div>
+  <!-- Edit Button -->
+  <div class="flex-item-" *ngIf="!editMode">
+    <button
+      type="button"
+      class="btn btn-primary"
+      pButton
+      label="Edit"
+      (click)="editMode = true"
+    ></button>
+  </div>
+
+  <!-- Save Button -->
+  <div class="flex-item-" *ngIf="editMode">
+    <button type="button" class="btn btn-primary" pButton label="Save" (click)="saveChanges()"></button>
+  </div>
+</div>
+
+</body>

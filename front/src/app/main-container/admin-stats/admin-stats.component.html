@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home Page</title>
+</head>
+<body>
+    <div class="home">
+      <div class="container">
+        <div class="row">
+            <div class="row-md-12">
+                <h1>Statistics</h1>
+                <div class="card flex flex-row align-items-center">
+                    <div class="chart-container">
+                      <p-chart type="doughnut" [data]="petsData" [options]="petOptions"></p-chart>
+                    </div>
+                    <div class="chart-container">
+                        <p-chart type="bar" [data]="usersData" [options]="usersOptions"></p-chart>
+                    </div>
+                    <div class="chart-container">
+                      <p-chart type="pie" [data]="moneyData" [options]="moneyOptions"></p-chart>
+                  </div>
+                </div>    
+            </div>
+        </div>
+    </div>    
+  </div>
+  

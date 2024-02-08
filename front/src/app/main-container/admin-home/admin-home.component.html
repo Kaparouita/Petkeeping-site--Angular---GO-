@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home Page</title>
+</head>
+
+<body>
+    <div class="navbar navbar-expand-sm">
+        <div class="container-fluid">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" href="/admin-home">Users</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/admin/stats">Statistics</a>
+              </li>
+              <li class="nav-item">
+                <button type="pi-button" class="btn btn-primary mb-auto" (click)="onLogout()">
+                  Logout
+              </button>
+              </li>
+            </ul>
+          </div>
+    </div>
+    
+    <div class="home">
+      <div class="card">
+        <p-table [value]="users" [tableStyle]="{ 'min-width': '50rem' }">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th>ID</th>
+                    <th>Username</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Type</th>
+                    <th>Action</th> <!-- Added "Action" column -->
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-user>
+                <tr>
+                    <td>{{ user.id }}</td>
+                    <td>{{ user.username }}</td>
+                    <td>{{ user.first_name }}</td>
+                    <td>{{ user.last_name }}</td>
+                    <td>{{ user.user_type }}</td>
+                    <td>
+                        <p-button (click)="deleteUser(user)">Delete</p-button> <!-- Added "Delete" button -->
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div> 
+  </div>
+    
+</body>
+</html>

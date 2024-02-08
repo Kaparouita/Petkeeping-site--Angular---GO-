@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Visitor page</title>
+</head>
+<body>
+    <div class="home">
+        <div class="flex flex-row align-items-center justify-content-between p-mb-3">
+            <div class="flex-item p-mr-2">
+                <p-dropdown [options]="orderByOptions" [(ngModel)]="selectedOrder" 
+                    placeholder="Select an order" (onChange)="onOrderChange()">
+                </p-dropdown>
+            </div>
+            <div class="flex-item">
+                <div class="flex flex-row align-items-center"> 
+                    <div class="flex-item p-mr-2">
+                        <label for="start_date" class="font-bold block mb-2"> Start Date </label>
+                        <p-calendar [(ngModel)]="startDate" dateFormat="dd.mm.yy" 
+                            placeholder="Start Date" (ngModelChange)="onDateChange()" 
+                            [showIcon]="true" inputId="start_date">
+                        </p-calendar> 
+                    </div>
+                    <div class="flex-item">
+                        <label for="end_date" class="font-bold block mb-2"> End Date </label>
+                        <p-calendar [(ngModel)]="endDate" dateFormat="dd.mm.yy" 
+                            placeholder="End Date" (ngModelChange)="onDateChange()"
+                            [showIcon]="true" inputId="end_date" >
+                        </p-calendar>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        
+        <div class="card">
+            <p-table [value]="keepers" [tableStyle]="{ 'min-width': '50rem' }">
+                <ng-template pTemplate="caption"> Keepers </ng-template>
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th>Username</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Address</th>
+                        <th>Space Type</th>
+                        <th>Space Description</th>
+                        <th>Dog Price</th>
+                        <th>Cat Price</th>
+                        <th>Book</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-keeper>
+                    <tr>
+                        <td>{{ keeper.username }}</td>
+                        <td>{{ keeper.first_name }}</td>
+                        <td>{{ keeper.last_name }}</td>
+                        <td>{{ keeper.address }}</td>
+                        <td>{{ keeper.space_type }}</td>
+                        <td>{{ keeper.space_desc }}</td>
+                        <td *ngIf="keeper.dog_keep">{{ keeper.dog_price * diffDays }}</td>
+                        <td *ngIf="!keeper.dog_keep">-</td>
+                        <td *ngIf="keeper.cat_keep">{{ keeper.cat_price * diffDays }}</td>
+                        <td *ngIf="!keeper.cat_keep">-</td>
+                        <td>
+                            <div class="card flex justify-content-center">
+                                <p-button (click)="showDialog()" label="Book"></p-button>
+                                <p-dialog header="Header" [(visible)]="visible" [modal]="true" [style]="{ width: '50rem' }" [breakpoints]="{ '1199px': '75vw', '575px': '90vw' }">
+                                    <ng-template pTemplate="header">
+                                        <div class="inline-flex align-items-center justify-content-center gap-2">
+                                            <label for="pet" class="font-bold block mb-2"> Choose your pet</label>
+                                            <p-dropdown [options]="petOptions" [(ngModel)]="selectedPetName" 
+                                                placeholder="Select a pet" (onChange)="onPetChange()" inputId="pet">
+                                            </p-dropdown>
+                                        </div>
+                                    </ng-template>
+                                    <div class="flex flex-row align-items-center">
+                                        <div class="flex-item p-mr-2">
+                                            <label for="message" class="font-bold block mb-2"> Message </label>
+                                            <input type="text" id="message" [(ngModel)]="message" placeholder="Enter your message for the keeper">
+                                        </div>
+                                    </div>
+                                    <ng-template pTemplate="footer">
+                                        <p-button icon="pi pi-check" (click)="book(keeper.id,keeper.dog_price,keeper.cat_price)" label="Ok" pAutoFocus [autofocus]="true"></p-button>
+                                    </ng-template>
+                                </p-dialog>
+                             </div>
+                        </td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </div> 
+    </div>
+</body>
+</html>
+          

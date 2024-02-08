@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Visitor page</title>
+</head>
+<body>
+    <div class="navbar navbar-expand-sm">
+        <div class="container-fluid">
+            <h4 id="lala">Welcome at PetKeepers!</h4>
+          </div>
+    </div>
+    <div class="home">
+      <div class="card">
+        <p-table [value]="keepers" [tableStyle]="{ 'min-width': '50rem' }">
+            <ng-template pTemplate="caption"> Keepers </ng-template>
+            <ng-template pTemplate="header">
+                <tr>
+                    <th>Username</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-keeper>
+                <tr>
+                    <td>{{ keeper.username }}</td>
+                    <td>{{ keeper.first_name }}</td>
+                    <td>{{ keeper.last_name }}</td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div> 
+  </div>
+  <footer>
+    <div id="footer">
+      <h4>More Information</h4>
+      <a class="nav-link" href="https://www.i-pet.gr/">https://www.i-pet.gr/</a>
+      <a class="nav-link" href="https://allaboutpets.gr/katoikidia-zoa-gia-mesa-sto-spiti/">https://allaboutpets.gr/katoikidia-zoa-gia-mesa-sto-spiti/</a>
+    </div>
+  </footer>
+</body>
+</html>

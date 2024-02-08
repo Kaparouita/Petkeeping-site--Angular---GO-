@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home Page</title>
+</head>
+<body>
+<div class="home">
+    <div class="flex-item">
+        <p>Total Bookings: {{ bookings }}        </p>
+        <p>Total days of petkeeping: {{ days }}          </p>
+    <div class="card">
+        <p-table [value]="reviews" [tableStyle]="{'min-width': '60rem'}">
+            <ng-template pTemplate="caption">
+                <div class="flex align-items-center justify-content-between">
+                    Reviews
+                </div>
+            </ng-template>
+            <ng-template pTemplate="header">
+                <tr>
+                    <th>Owner's name</th>
+                    <th>Review</th>
+                    <th>Rating</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-review>
+                <tr>
+                    <td>{{ getOwnerName(review.owner_id) }}</td>
+                    <td>{{ review.comment }}</td>
+                    <td><p-rating [ngModel]="review.rating" [readonly]="true" [cancel]="false"></p-rating></td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+    </div>
+</div>
+</body>

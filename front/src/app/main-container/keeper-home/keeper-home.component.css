@@ -1,0 +1,35 @@
+.home {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+    background-image: url("../../../assets/cat.jpg");
+    background-size: cover;
+    background-position: center;
+  }
+  
+.flex-item-  {
+    display: flex;
+    flex-direction: row;
+    justify-content:left;
+    align-items: center;
+    padding: 5px;
+    box-sizing: border-box;
+    background-size: cover;
+    background-position: center;
+  }
+
+  label {
+    font-size: 15px;
+    font-weight: bold;
+    color: #000000;
+    margin-right: 10px;
+  }
+
+  #buttonpwd {
+    margin-left: 5px;
+  }

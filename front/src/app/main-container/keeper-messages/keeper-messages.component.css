@@ -1,0 +1,13 @@
+.home {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+    background-image: url("../../../assets/back.jpg");
+    background-size: cover;
+    background-position: center;
+  }
